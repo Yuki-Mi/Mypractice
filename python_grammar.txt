@@ -1,0 +1,61 @@
+python文法
+
+◆オーバーライド
+参考プログラム
+----------------------------------------------
+class Dog(object):
+    def __init__(self, name):
+       self.name = name
+
+class UltraDog(Dog):
+    def __init__(self, name, type):
+        super(UltraDog, self).__init__(name)
+        self.type = type
+
+ud1 = UltraDog("taro", "akita")
+print(ud1.name)
+------------------------------------------------
+super()関数の使い方はsuper(クラス、インスタンス自身).メソッド名()となる。
+例だとクラスUltraDogはスーパークラスDogの__init__()メソッドの中にname属性を
+初期化する処理がすでにあるので再利用しようとしている
+
+
+
+◆*argsと**kwargs
+関数定義で引数に*や**をつけると任意の数の引数を受け取ることができる。
+慣例として*argsと**kwargsが使われる。
+
+*argsは複数の引数をタプルとして受け取る
+参考プログラム
+-------------------------------------------------
+def my_sum(*args):
+    return sum(args)
+
+print(my_sum(1, 2, 3, 4))
+# 10
+print(my_sum(1, 2, 3, 4, 5, 6, 7, 8))
+# 36
+--------------------------------------------------
+
+**kwargsは複数のキーワード引数を辞書として受け取る
+参考プログラム
+---------------------------------------------------
+def func_kwargs(**kwargs):
+    print('kwargs: ', kwargs)
+    print('type: ', type(kwargs))
+
+func_kwargs(key1=1, key2=2, key3=3)
+# kwargs:  {'key1': 1, 'key2': 2, 'key3': 3}
+# type:  <class 'dict'>
+---------------------------------------------------
+
+
+
+◆SetLabel()
+SetLabel()を使うことで、ラベルの文字を更新することができるはずだが、
+現状できない
+参考プログラム
+----------------------------------------------------
+label_en = wx.StaticText(panel_ui, -1, '', pos=(10, 50))
+        label_en.SetLabel('Hello.'
+----------------------------------------------------
